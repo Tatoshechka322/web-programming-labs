@@ -156,8 +156,13 @@ def bi():
 '''
 @app.route('/lab2/example')
 def example():
-    name = 'Боков Антон'
-    group = 'ФБИ-12'
-    cours = '3 курс'
-    number = 'Лабораторная работа 2'
-    return render_template('example.html', name=name, group=group, cours=cours,number=number)
+    name, number, group, cours = 'Боков Антон','Лабораторная работа 2', 'ФБИ-12', '3 курс'
+    fruits =[
+         {'name':'яблоки','price':88},
+         {'name':'груши','price':74},
+         {'name':'апельсины','price':94},
+         {'name':'мандарины','price':90},
+         {'name':'манго','price':400}
+         ]
+
+    return render_template('example.html', name=name, group=group, cours=cours,number=number,fruits=fruits)
