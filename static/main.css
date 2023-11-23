@@ -25,7 +25,10 @@ a {
     font-weight: bold;
     font-size: 20px;
 }
-
 .bilet{
     font-weight: bold;
+}
+
+.snow{
+    color: blue;
 }

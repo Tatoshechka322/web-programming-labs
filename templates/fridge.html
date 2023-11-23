@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block lab %}Лабораторная работа 4{% endblock %}
+
+{% block main %}
+    <h1>Холодильник</h1>
+    <form method="post">
+        <div>
+            <label for="password">Введите температуру &#x2103;:</label>
+            <br>
+            <input type="number" id="temp" name="temp" value={{temp}}>
+        </div>
+        <br>
+        <span class="error">{{error}}</span>
+        <div>
+            <br>
+            <button type="submit">Установить температуру</button>
+        </div>
+        <br>
+    </form>
+{% endblock %}
