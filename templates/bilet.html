@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+
+{% block lab %}Лабораторная работа 3{% endblock %}
+
+{% block main %}
+
+    {% if FIO and age and wherefrom and whereto and date %}
+        <div>
+            <h1>Железнодорожный билет</h1>
+            <div>
+                <div class="bilet">
+                    Тип билета:
+                    {% if type == 'child' %}
+                        Детский
+                    {% else %}
+                        Взрослый
+                    {% endif %}
+                </div>
+                <div class="bilet">
+                    Полка:
+                    {% if place == 'down' %}
+                        Нижняя
+                    {% elif place == 'up' %}
+                        Верхняя
+                    {% elif place == 'up-t' %}
+                        Верхняя боковая
+                    {% else %}
+                        Нижняя боковая
+                    {% endif %}
+                </div>
+                <div class="bilet">
+                    Наличие багажа:
+                    {% if things == 'with' %}
+                        Присутвует
+                    {% else %}
+                        Отсутствует
+                    {% endif %}
+                </div>
+            </div>
+            <div>
+                <h2>{{FIO}}</h2>
+                <div class="bilet">Возраст: {{age}}</div> 
+                <div class="bilet">Маршрут следования: {{wherefrom}} -> {{whereto}}</div>
+                <div class="bilet">Дата поездки:  {{date}}</div>
+            </div>
+            <br>
+        </div>
+    {% else %}
+
+        <h1>Железнодорожный билет</h1>
+        <form>
+            <label>ФИО</label>
+            <div>
+                <input type="text" name="FIO" value="{{FIO or ''}}">
+                <span class="error">{{ errors.FIO }}</span>
+            </div>
+            <br>
+            <label>Возраст</label>
+            <div>
+                <input type="number" name="age" value="{{age or ''}}"  >
+                <span class="error">{{ errors.age }}</span>
+            </div>
+            <br>
+            <label>Пункт выезда</label>
+            <div>
+                <input type="text" name="wherefrom" value="{{wherefrom or ''}}"  >
+                <span class="error">{{ errors.wherefrom }}</span>
+            </div>
+            <br>
+            <label>Пункт назначения</label>
+            <div>
+                <input type="text" name="whereto" value="{{whereto or ''}}"  >
+                <span class="error">{{ errors.whereto }}</span>
+            </div>
+            <br>
+            <label>Дата поездки</label>
+            <div>
+                <input type="date" name="date" value="{{date or ''}}"  >
+                <span class="error">{{ errors.date }}</span>
+            </div>
+
+            <div>
+                <br>
+                <label>Тип билета</label>
+                <div>
+                    <input type="radio" value="child" name="type" checked  >Детский
+                </div>
+                <div>
+                    <input type="radio" value="old" name="type" checked  >Взрослый
+                </div>
+
+                <label>Полка</label>
+                <div>
+                    <input type="radio" value="down" name="place" checked  >Нижняя
+                </div>
+                <div>
+                    <input type="radio" value="up" name="place" checked  >Верхняя
+                </div>
+                <div>
+                    <input type="radio" value="down-t" name="place" checked  >Нижняя боковая
+                </div>
+                <div>
+                    <input type="radio" value="up-t" name="place" checked  >Верхняя боковая
+                </div>
+
+                <label>Наличие багажа</label>
+                <div>
+                    <input type="radio" value="with" name="things" checked  >С багажом
+                </div>
+                <div>
+                    <input type="radio" value="without" name="things" checked  >Без багажа
+                </div>
+            </div>
+            <br>
+            <div>
+                <button type="submit">Сформировать билет</button>
+            </div>
+        </form>
+    {% endif %}
+{% endblock %}
