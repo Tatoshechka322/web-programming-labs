@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block lab %}Лабораторная работа 4{% endblock %}
+
+{% block main %}
+    <h1>Вход</h1>
+    <h2>Пожалуйста, авторизуйтесь</h2>
+    <span class="error">{{error}}</span>
+    <form method="post">
+        <div>
+            <br>
+            <label for="username">Пользователь:</label>
+            <br>
+            <input type="text" id="username" name="username" value={{username}}>
+        </div>
+        <div>
+            <label for="password">Пароль:</label>
+            <br>
+            <input type="password" id="password" name="password" value={{password}}>
+        </div>
+        <br>
+        <div>
+            <button type="submit">Войти</button>
+            <button type="reset">Отмена</button>
+        </div>
+        <br>
+    </form>
+{% endblock %}
