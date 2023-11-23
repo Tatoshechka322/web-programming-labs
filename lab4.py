@@ -1,4 +1,4 @@
-from flask import Blueprint, redirect, url_for, render_template, request
+from flask import Blueprint, redirect, url_for, render_template, request, make_response
 lab4 = Blueprint('lab4',__name__)
 
 @lab4.route('/lab4/')
@@ -108,3 +108,16 @@ def corn():
             error = 'Объем отсутствует в наличии'
         
     return render_template('corn.html',corn=corn,weight=weight,error=error)
+
+
+@lab4.route('/lab4/cookies', methods=['GET','POST'])
+def cookies():
+    resp = make_response(render_template('cookies.html'))
+    color = request.form.get('color')
+    background_color = request.form.get('background-color')
+    font_size = request.form.get('font-size')
+    if color or background_color or font_size:
+        resp.set_cookie('color',color)
+        resp.set_cookie('background-color',background_color)
+        resp.set_cookie('font-size',f"{font_size}px")
+    return resp 
