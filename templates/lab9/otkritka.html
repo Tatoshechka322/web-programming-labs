@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block lab %}Лабораторная работа 9{% endblock %}
+
+{% block main %}
+    <div><img style="height: 800px; margin-left: 20%;" src="/static/n_4.png"></div>
+
+    <div style="position: absolute; margin-top: -36%; margin-left: 40%;">
+        {% if gender == 'male' %}
+            <div>Поздравляю с наступающим</div>
+            <div>новым годом, {{ user_2 }}!</div>
+            <br>
+            <div>Исполения всех желаний, будь</div>
+            <div>любимым и счастливым</div>
+            <br>
+            <div>С любовью, {{ user_1 }} </div>
+        {% endif %}
+
+        {% if gender == 'female' %}
+            <div>Поздравляю с наступающим</div>
+            <div>новым годом, {{ user_2 }}!</div>
+            <br>
+            <div>Исполения всех желаний, будь</div>
+            <div>любимой и счастливой</div>
+            <br>
+            <div>С любовью, {{ user_1 }} </div>
+        {% endif %}
+    </div>
+{%endblock%}
