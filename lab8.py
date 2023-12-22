@@ -30,4 +30,15 @@ def del_courses(course_num):
         return '', 204
     else:
         abort(404, "Course not found")
+
+@lab8.route('/lab8/api/courses/<int:course_num>',methods=['PUT'])
+def put_courses(course_num):
+    if course_num < 0 or course_num > len(courses)-1:
+        abort(404, "Course not found")
+    course = request.get_json()
+    courses[course_num] = course
+    return courses[course_num]
+        
+
+
     
