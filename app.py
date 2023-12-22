@@ -9,6 +9,8 @@ from lab7 import lab7
 
 
 app = Flask(__name__)
+app.secret_key='123'
+
 app.register_blueprint(lab1)
 app.register_blueprint(lab2)
 app.register_blueprint(lab3)

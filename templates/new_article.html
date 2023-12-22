@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block lab %}Лабораторная работа 5{% endblock %}
+
+{% block main %}
+<div>
+<h1>Новая заметка</h1>
+<div class="error_2"><span>{{ errors }}</span></div>
+    <form method="POST">
+        <input name="title_article" class='article_1' type="text" placeholder="Название статьи">
+        <br>
+        <textarea class='article_2' name="text_article" placeholder="Текст статьи" rows="20"></textarea>
+        <br>
+        <input class="bl_5_button" type="submit" value="Apply" />
+        <input type="checkbox" id="is_public" name="is_public">
+        <label for="is_public">Опубликовать статью</label>
+    </form>
+</div>
+<br>
+<form action="/lab6"><input class="bl_5_button" type="submit" value="Главная страница" /></form>
+<h1>Избранные статьи</h1>
+<ul>
+    {% for article in articles %}
+        <li>
+            <div class="article">
+                <h3>{{ article.title }}</h3>
+                <p>{{ article.article_text }}</p>
+                <p>Автор: {{ article.user.username }}</p>
+                {% if article.is_favorite %}
+                    <p>Статья в избранном</p>
+                {% else %}
+                    <form action="{{ url_for('add_to_favorite', article_id=article.id) }}" method="POST" style="display:inline">
+                        <button type="submit" class="bl_6_1_button">Добавить в избранное</button>
+                    </form>
+                {% endif %}
+            </div>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}
